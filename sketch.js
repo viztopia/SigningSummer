@@ -71,37 +71,37 @@ function createButtons() {
   // from the video with a label of "rock" to the classifier
   buttonA = select('#addClassRock');
   buttonA.mousePressed(function() {
-    addExample('Rock');
+    addExample('Hello');
   });
 
   // When the B button is pressed, add the current frame
   // from the video with a label of "paper" to the classifier
   buttonB = select('#addClassPaper');
   buttonB.mousePressed(function() {
-    addExample('Paper');
+    addExample('Apple');
   });
 
   // When the C button is pressed, add the current frame
   // from the video with a label of "scissor" to the classifier
   buttonC = select('#addClassScissor');
   buttonC.mousePressed(function() {
-    addExample('Scissor');
+    addExample('Other');
   });
 
   // Reset buttons
   resetBtnA = select('#resetRock');
   resetBtnA.mousePressed(function() {
-    clearLabel('Rock');
+    clearLabel('Hello');
   });
 	
   resetBtnB = select('#resetPaper');
   resetBtnB.mousePressed(function() {
-    clearLabel('Paper');
+    clearLabel('Apple');
   });
 	
   resetBtnC = select('#resetScissor');
   resetBtnC.mousePressed(function() {
-    clearLabel('Scissor');
+    clearLabel('Other');
   });
 
   // Predict button
@@ -136,9 +136,9 @@ function gotResults(err, result) {
       select('#confidence').html(`${confidences[result.label] * 100} %`);
     }
 
-    select('#confidenceRock').html(`${confidences['Rock'] ? confidences['Rock'] * 100 : 0} %`);
-    select('#confidencePaper').html(`${confidences['Paper'] ? confidences['Paper'] * 100 : 0} %`);
-    select('#confidenceScissor').html(`${confidences['Scissor'] ? confidences['Scissor'] * 100 : 0} %`);
+    select('#confidenceRock').html(`${confidences['Hello'] ? confidences['Hello'] * 100 : 0} %`);
+    select('#confidencePaper').html(`${confidences['Apple'] ? confidences['Apple'] * 100 : 0} %`);
+    select('#confidenceScissor').html(`${confidences['Other'] ? confidences['Other'] * 100 : 0} %`);
   }
 
   classify();
@@ -148,9 +148,9 @@ function gotResults(err, result) {
 function updateCounts() {
   const counts = knnClassifier.getCountByLabel();
 
-  select('#exampleRock').html(counts['Rock'] || 0);
-  select('#examplePaper').html(counts['Paper'] || 0);
-  select('#exampleScissor').html(counts['Scissor'] || 0);
+  select('#exampleRock').html(counts['Hello'] || 0);
+  select('#examplePaper').html(counts['Apple'] || 0);
+  select('#exampleScissor').html(counts['Other'] || 0);
 }
 
 // Clear the examples in one label
